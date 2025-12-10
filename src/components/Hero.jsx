@@ -51,7 +51,7 @@ export default function Hero() {
             ">
               <img
                 src="/src/images/dan.jpg"
-                alt="Daniel Bila"
+                alt="Daniel"
                 className="w-full h-full object-cover"
                 draggable="false"
               />

@@ -4,10 +4,10 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaTwitter } from "react-
 
 export default function ContactPage() {
   const contacts = [
-    { icon: <FaEnvelope />, label: "Email", link: "mailto:dan@example.com" },
+    { icon: <FaEnvelope />, label: "Email", link: "mailto:adorenti12@gmail.com" },
     { icon: <FaLinkedin />, label: "LinkedIn", link: "https://linkedin.com/in/yourusername" },
-    { icon: <FaGithub />, label: "GitHub", link: "https://github.com/yourusername" },
-    { icon: <FaInstagram />, label: "Instagram", link: "https://instagram.com/yourusername" },
+    { icon: <FaGithub />, label: "GitHub", link: "https://github.com/danielAd0" },
+    { icon: <FaInstagram />, label: "Instagram", link: "https://instagram.com/broztitute.1" },
     { icon: <FaTwitter />, label: "Twitter/X", link: "https://twitter.com/yourusername" }
   ];
 
