@@ -1,12 +1,6 @@
 // src/components/Hero.jsx
 import { motion } from "framer-motion";
 
-/**
- * Hero: improved layout with trimmed/cropped image that "belongs".
- * - Place your photo at: public/images/dan.jpg
- * - If you store it under src, change the img src accordingly.
- */
-
 export default function Hero() {
   const name = "Daniel";
   const letters = name.split("");
@@ -24,33 +18,49 @@ export default function Hero() {
 
   const letterVariant = {
     hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 22 } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 22 }
+    }
   };
 
   const paragraphVariant = {
     hidden: { opacity: 0, y: 12 },
-    visible: (i) => ({ opacity: 1, y: 0, transition: { delay: 0.15 + i * 0.18, duration: 0.6 } })
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.15 + i * 0.18, duration: 0.6 }
+    })
   };
 
   return (
     <section className="w-full min-h-[70vh] flex items-center">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          {/* IMAGE COLUMN */}
-<div className="md:col-span-5 flex justify-center md:justify-start">
-  <div className="w-[290px] sm:w-[340px] md:w-[360px] lg:w-[420px] h-[360px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/6 backdrop-blur-sm">
-    <img
-      src="./src/images/dan.jpg"
-      alt="Daniel Bila"
-      className="w-full h-full object-cover transition-transform duration-500"
-      draggable="false"
-    />
-  </div>
-</div>
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 py-12">
+        
+        {/* Mobile-first grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
 
+          {/* Image Column */}
+          <div className="md:col-span-5 flex justify-center md:justify-start">
+            <div className="
+              w-[250px] sm:w-[300px] md:w-[360px] lg:w-[420px]
+              h-[320px] sm:h-[360px] md:h-[520px]
+              rounded-2xl overflow-hidden shadow-2xl
+              ring-1 ring-white/10 bg-white/5
+            ">
+              <img
+                src="/src/images/dan.jpg"
+                alt="Daniel Bila"
+                className="w-full h-full object-cover"
+                draggable="false"
+              />
+            </div>
+          </div>
 
-          {/* TEXT COLUMN */}
-          <div className="md:col-span-7 text-right text-white">
+          {/* Text Column */}
+          <div className="md:col-span-7 text-center md:text-right text-white">
+            
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight inline-block"
               variants={container}
@@ -64,7 +74,12 @@ export default function Hero() {
               ))}
             </motion.h1>
 
-            <motion.div className="mt-6 max-w-xl ml-auto" variants={container} initial="hidden" animate="visible">
+            <motion.div
+              className="mt-6 max-w-xl mx-auto md:ml-auto md:mr-0"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
               {paragraphs.map((p, i) => (
                 <motion.p
                   key={i}
@@ -77,21 +92,23 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* Optional quick links area (resume / contact) */}
-            <div className="mt-6 flex justify-end gap-4">
+            {/* Buttons */}
+            <div className="mt-6 flex justify-center md:justify-end gap-4 flex-wrap">
               <a
                 href="/resume.pdf"
-                className="inline-block px-4 py-2 bg-white/8 backdrop-blur-sm rounded-md text-sm font-medium hover:bg-white/12 transition"
+                className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-md text-sm font-medium hover:bg-white/20 transition"
               >
                 Download Resume
               </a>
+
               <a
                 href="/projects"
-                className="inline-block px-4 py-2 bg-spicy-paprika text-white rounded-md text-sm font-medium hover:brightness-95 transition"
+                className="px-4 py-2 bg-spicy-paprika text-white rounded-md text-sm font-medium hover:brightness-95 transition"
               >
                 Projects
               </a>
             </div>
+
           </div>
         </div>
       </div>

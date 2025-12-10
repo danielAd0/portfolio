@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 
 export default function AboutPage() {
+
   const skills = [
     { name: "Java", level: 90, icon: <FaJava className="text-3xl" /> },
     { name: "Swing / JavaFX", level: 85, icon: <FaJava className="text-3xl" /> },
@@ -71,25 +72,24 @@ export default function AboutPage() {
   };
 
   return (
-    <section className="relative w-full min-h-screen py-20 px-8 md:px-20 bg-carbon-black text-floral-white font-poppins">
+    <section className="relative w-full min-h-screen py-16 px-5 sm:px-8 md:px-20 bg-carbon-black text-floral-white">
 
       {/* Title */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-16"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         About Me
       </motion.h1>
 
-      {/* Intro Section */}
+      {/* Intro */}
       <motion.div
-        className="max-w-4xl mx-auto text-dust-grey-200 text-lg leading-relaxed space-y-6 mb-16"
+        className="max-w-4xl mx-auto text-dust-grey-200 text-base sm:text-lg leading-relaxed space-y-6 mb-16"
         initial="hidden"
         animate="visible"
         variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
       >
-
         <motion.p variants={fadeUp}>
           I am <span className="font-semibold text-white">Daniel</span>, a dedicated software developer with strong experience in Java desktop applications and modern web development.
         </motion.p>
@@ -101,7 +101,6 @@ export default function AboutPage() {
         <motion.p variants={fadeUp}>
           I believe in continuous learning and I'm currently broadening my expertise in full-stack development and cybersecurity.
         </motion.p>
-
       </motion.div>
 
       {/* Glass CV Card */}
@@ -119,55 +118,55 @@ export default function AboutPage() {
         </a>
       </motion.div>
 
-{/* Skills Section — 3 Columns, Perfect Icon Alignment */}
-<h2 className="text-2xl font-semibold text-spicy-paprika mb-10 text-center">
-  Technical Skills
-</h2>
-
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20">
-
-  {skills.map((skill, i) => (
-    <motion.div
-      key={skill.name}
-      variants={fadeUp}
-      custom={i}
-      initial="hidden"
-      animate="visible"
-      className="flex items-center justify-start gap-4"
-    >
-      {/* Fixed icon width ensures perfect alignment across columns */}
-      <div className="w-10 h-10 flex items-center justify-center">
-        {skill.icon}
-      </div>
-
-      {/* Skill label */}
-      <span className="text-white text-lg font-medium">
-        {skill.name}
-      </span>
-    </motion.div>
-  ))}
-
-</div>
-
-      {/* Timeline */}
+      {/* Skills – Perfect Grid */}
       <h2 className="text-2xl font-semibold text-spicy-paprika mb-10 text-center">
-        Experience Timeline
+        Technical Skills
       </h2>
 
-      <div className="relative max-w-3xl mx-auto border-l border-white/20 pl-8 mb-20">
-        {experiences.map((exp, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20">
+        {skills.map((skill, i) => (
           <motion.div
-            key={i}
-            className="mb-12 relative"
+            key={skill.name}
             variants={fadeUp}
             custom={i}
             initial="hidden"
             animate="visible"
+            className="flex items-center gap-4"
           >
-            <div className="absolute -left-4 top-1 w-3 h-3 rounded-full bg-spicy-paprika"></div>
+            <div className="w-10 h-10 flex items-center justify-center">
+              {skill.icon}
+            </div>
+
+            <span className="text-white text-lg font-medium">
+              {skill.name}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Timeline – Fully Mobile Safe */}
+      <h2 className="text-2xl font-semibold text-spicy-paprika mb-10 text-center">
+        Experience Timeline
+      </h2>
+
+      <div className="
+        relative max-w-3xl mx-auto
+        border-l border-white/20 pl-6 sm:pl-8
+        mb-20
+      ">
+        {experiences.map((exp, i) => (
+          <motion.div
+            key={i}
+            variants={fadeUp}
+            custom={i}
+            initial="hidden"
+            animate="visible"
+            className="mb-12 relative"
+          >
+            <div className="absolute -left-3 sm:-left-4 top-1 w-3 h-3 rounded-full bg-spicy-paprika"></div>
             <p className="text-sm text-dust-grey-400">{exp.year}</p>
-            <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-            <p className="text-dust-grey-300">{exp.desc}</p>
+            <h3 className="text-lg sm:text-xl font-semibold text-white">{exp.title}</h3>
+            <p className="text-dust-grey-300 text-sm sm:text-base">{exp.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -177,7 +176,7 @@ export default function AboutPage() {
         Values & Principles
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-20">
         {values.map((val, i) => (
           <motion.div
             key={i}

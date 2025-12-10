@@ -13,56 +13,50 @@ export default function ContactPage() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i = 0) => ({
-      opacity: 1,
-      y: 0,
+    visible: (i) => ({
+      opacity: 1, y: 0,
       transition: { delay: i * 0.2, duration: 0.6 }
-    })
+    }),
   };
 
   return (
-    <section className="relative w-full min-h-screen py-16 px-8 md:px-20 bg-carbon-black text-floral-white font-poppins flex flex-col items-center">
+    <section className="w-full min-h-screen py-20 px-6 md:px-20 bg-primary_bg text-main_text text-center font-poppins">
       
       <motion.h1
-        className="text-4xl md:text-5xl font-bold mb-8 text-spicy-paprika"
-        initial={{ opacity: 0, y: 20 }}
+        className="text-4xl md:text-5xl font-bold mb-6 text-accent_text"
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
       >
         Contact
       </motion.h1>
 
       <motion.p
-        className="text-dust-grey-200 text-center max-w-2xl mb-12 text-base md:text-lg"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        className="text-muted_text max-w-2xl mx-auto mb-12 text-base md:text-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
       >
-        Feel free to reach out through any of the platforms below. I’m always open to discussing new ideas, collaborations, or just connecting!
+        Reach out anytime for collaborations, opportunities, or just to connect.
       </motion.p>
 
-      <motion.div
-        className="flex flex-wrap gap-8 md:gap-12 justify-center text-4xl md:text-5xl"
-        initial="hidden"
-        animate="visible"
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.2 } } }}
-      >
-        {contacts.map((contact, i) => (
+      {/* ICONS – MOBILE FIXED WITH GRID */}
+      <div className="grid grid-cols-3 sm:grid-cols-5 gap-10 text-4xl md:text-5xl justify-center">
+        {contacts.map((c, i) => (
           <motion.a
-            key={contact.label}
-            href={contact.link}
+            key={c.label}
+            href={c.link}
             target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center text-dust-grey-400 hover:text-spicy-paprika transition-colors duration-300"
+            className="flex flex-col items-center text-muted_text hover:text-accent_text"
             variants={fadeUp}
+            initial="hidden"
+            animate="visible"
             custom={i}
           >
-            {contact.icon}
-            <span className="text-sm mt-1">{contact.label}</span>
+            {c.icon}
+            <span className="text-xs md:text-sm mt-2">{c.label}</span>
           </motion.a>
         ))}
-      </motion.div>
-
+      </div>
     </section>
   );
 }

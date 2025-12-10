@@ -1,15 +1,14 @@
 // src/pages/ProjectsPage.jsx
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 export default function ProjectsPage() {
   const projects = [
     {
-      image: "./src/images/gymmembership-app.png",
+      image: "/images/gymmembership-app.png",
       title: "Gym Membership Registration Frame App",
       description:
-        "Desktop Java application for managing gym membership registrations with SQLite database support. Includes form validation, reporting, and intuitive UI for staff users.",
+        "Desktop Java application for managing gym memberships. Includes validation, reporting, and SQLite support.",
       tech: ["Java", "Swing", "SQLite", "OOP"],
       github: "https://github.com/danielAd0/GymMembershipFrameApp",
     },
@@ -17,7 +16,7 @@ export default function ProjectsPage() {
       image: "/images/encryption-app.png",
       title: "Secure File Encryption App",
       description:
-        "Desktop application to encrypt and decrypt files using Caesar Cipher. Features include file browsing, secure key management, and a modern GUI interface.",
+        "Encrypt and decrypt files with a secure Caesar Cipher system. Includes clean UI and file browsing features.",
       tech: ["Java", "Swing", "Cryptography", "OOP"],
       github: "#",
     },
@@ -25,42 +24,32 @@ export default function ProjectsPage() {
       image: "/images/portfolio-preview.png",
       title: "Portfolio Website",
       description:
-        "Personal portfolio to showcase projects, skills, and experience. Includes smooth animations, responsive design, and interactive UI components.",
-      tech: ["React", "TailwindCSS", "Framer Motion", "Responsive Design"],
+        "My personal portfolio built with React, Tailwind, and Framer Motion. Smooth animations and responsive UI.",
+      tech: ["React", "TailwindCSS", "Framer Motion"],
       github: "#",
     },
   ];
 
   return (
-    <section className="relative w-full min-h-screen px-6 sm:px-12 lg:px-24 py-16 bg-carbon-black text-floral-white font-poppins">
-      
-      {/* Page Title */}
+    <section className="w-full min-h-screen px-6 sm:px-10 lg:px-24 py-20 bg-primary_bg text-main_text font-poppins">
+
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-12"
-        initial={{ opacity: 0, y: 25 }}
+        className="text-4xl md:text-5xl font-bold text-center mb-16"
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         Projects
       </motion.h1>
 
-      {/* Grid */}
-      <div className="grid gap-8 md:gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
+      {/* RESPONSIVE GRID */}
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="
-              p-0 rounded-2xl border overflow-hidden
-              backdrop-blur-xl bg-black/30
-              border-white/10 shadow-lg transition-all
-              cursor-pointer
-            "
-            whileHover={{
-              scale: 1.05,
-              y: -5,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-            }}
-            transition={{ type: 'spring', stiffness: 180, damping: 15 }}
+            className="rounded-2xl overflow-hidden border border-white/10 bg-section_bg/40 backdrop-blur-xl shadow-xl"
+            whileHover={{ scale: 1.03, y: -4 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
             {/* Image */}
             <img
@@ -69,22 +58,19 @@ export default function ProjectsPage() {
               className="w-full h-48 object-cover"
             />
 
-            {/* Content */}
-            <div className="p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold text-floral-white mb-3">
-                {project.title}
-              </h3>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
 
-              <p className="text-dust-grey-200 mb-4 leading-relaxed text-sm sm:text-base">
+              <p className="text-muted_text mb-4 text-sm leading-relaxed">
                 {project.description}
               </p>
 
-              {/* Tech Badges */}
+              {/* Tech */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((tech, idx) => (
+                {project.tech.map((tech, i) => (
                   <span
-                    key={idx}
-                    className="px-2 py-1 bg-spicy-paprika/20 text-spicy-paprika text-xs sm:text-sm rounded-full font-medium"
+                    key={i}
+                    className="px-2 py-1 text-xs bg-accent_text/20 text-accent_text rounded-full"
                   >
                     {tech}
                   </span>
@@ -94,13 +80,11 @@ export default function ProjectsPage() {
               <a
                 href={project.github}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-medium text-spicy-paprika hover:text-spicy-paprika-400 transition-colors"
+                className="flex items-center gap-2 text-accent_text hover:opacity-70"
               >
                 <FaGithub /> View on GitHub
               </a>
             </div>
-
           </motion.div>
         ))}
       </div>
