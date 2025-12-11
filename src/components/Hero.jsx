@@ -50,7 +50,7 @@ export default function Hero() {
               ring-1 ring-white/10 bg-white/5
             ">
               <img
-                src="/src/images/dan.jpg"
+                src="/images/dan.jpg"
                 alt="Daniel"
                 className="w-full h-full object-cover"
                 draggable="false"
