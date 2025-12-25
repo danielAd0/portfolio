@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"], // global Poppins
+        sans: ["Poppins", "sans-serif"],
       },
-      // Keep all your original colors untouched
       colors: {
         primary_bg: "#0A0A1F",
         section_bg: "#14142F",
@@ -16,7 +16,7 @@ module.exports = {
         accent_text: "#FFC300",
         button_primary: "#00B4D8",
         button_hover: "#12D8FF",
-        border_light: "#7CD1FF"
+        border_light: "#7CD1FF",
       },
       keyframes: {
         blink: {
@@ -26,8 +26,8 @@ module.exports = {
       },
       animation: {
         blink: "blink 1s step-start infinite",
-      }
-    }
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
