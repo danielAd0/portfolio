@@ -1,33 +1,59 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: "class",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Poppins", "sans-serif"],
-      },
       colors: {
-        primary_bg: "#0A0A1F",
-        section_bg: "#14142F",
-        overlay_bg: "#1F1F3D",
-        main_text: "#E9F9FC",
-        muted_text: "#B0CFEF",
-        accent_text: "#FFC300",
-        button_primary: "#00B4D8",
-        button_hover: "#12D8FF",
-        border_light: "#7CD1FF",
-      },
-      keyframes: {
-        blink: {
-          "0%, 50%, 100%": { opacity: 1 },
-          "25%, 75%": { opacity: 0 },
+        primary: {
+          DEFAULT: '#3b82f6',     // Blue-500
+          light: '#60a5fa',       // Blue-400
+          dark: '#2563eb',        // Blue-600
         },
+        accent: {
+          DEFAULT: '#8b5cf6',     // Violet-500
+          light: '#a78bfa',       // Violet-400
+          dark: '#7c3aed',        // Violet-600
+        },
+        background: {
+          light: '#f8fafc',       // Slate-50
+          dark: '#0f172a',        // Slate-900
+        },
+        // Keep your existing colors for compatibility
+        'spicy-paprika': '#dc2626',
+        'floral-white': '#fffaf0',
       },
       animation: {
-        blink: "blink 1s step-start infinite",
+        'gradient-shift': 'gradientShift 20s ease infinite',
+        'fade-in-up': 'fadeInUp 0.6s ease-out',
+        'float': 'float 6s ease-in-out infinite',
       },
+      keyframes: {
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      lineClamp: {
+        3: '3',
+      }
     },
   },
-  plugins: [],
-};
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
+}
